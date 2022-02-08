@@ -4,7 +4,7 @@ pipeline {
       stage("SCM"){
           steps {
              git(branch: 'master', credentialsId: '44feaac4-248a-4a31-bdfc-dc372382fbb1', url: 'https://github.com/nehalBaigSystemLtd/covid19-dashboard/')
-             sh 'ls -lrt'
+             sh 'ls -lat'
           }
       }
       stage("build"){
@@ -14,7 +14,7 @@ pipeline {
       }
       stage("test"){
           steps {
-            
+             sh 'python manage.py test'
           }
       }
       stage("deploy"){
