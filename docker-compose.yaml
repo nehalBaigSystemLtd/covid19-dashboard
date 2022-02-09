@@ -1,0 +1,10 @@
+version: '3'
+services:
+    covidDjangoApp:
+        build: "."
+        restart: always
+        container_name: CDA
+        ports:
+            - '8000:8000'
+        volumes:
+            - './:./'
