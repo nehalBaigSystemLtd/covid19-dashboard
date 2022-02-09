@@ -14,7 +14,7 @@ pipeline {
       }
       stage("test"){
           steps {
-             sh 'python manage.py test --verbosity 3'
+             sh 'python3 manage.py test --verbosity 3'
           }
       }
       stage("deploy"){
