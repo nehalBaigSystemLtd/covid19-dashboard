@@ -9,23 +9,20 @@ pipeline {
       }
       stage("build"){
           steps {
-            
+             sh 'python3 -m venv env && . env/bin/activate && pip install -r requirements.txt'
           }
       }
       stage("test"){
           steps {
-             sh 'python manage.py test'
+             sh 'python manage.py test --verbosity 3'
           }
       }
       stage("deploy"){
           steps {
-                 
+               ssh-agent(){
+                    sh 'ssh -o StrictHostKeyChecking=no -l mrzjordan 182.176.114.79 " cd ~/covid19-dashboard;ls -lat; git pull;docker-compose restart"'
+                }
             }
         }
     }
-     post{
-        success{
-               
-        }
-     }
 }
