@@ -25,4 +25,9 @@ pipeline {
             }
         }
     }
+     post{
+        success{
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: './htmlcov/', reportFiles: 'index.html', reportName: 'Django Test Report', reportTitles: 'DJango Test Report'])
+        }
+     }
 }
