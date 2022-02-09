@@ -19,7 +19,7 @@ pipeline {
       }
       stage("deploy"){
           steps {
-               ssh-agent(){
+               sshagent(['7d94bfc0-245f-4637-a3da-dbae19921747']) {
                     sh 'ssh -o StrictHostKeyChecking=no -l mrzjordan 182.176.114.79 " cd ~/covid19-dashboard;ls -lat; git pull;docker-compose restart"'
                 }
             }
