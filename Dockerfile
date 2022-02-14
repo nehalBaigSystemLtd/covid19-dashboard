@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-
+WORKDIR /capp
 EXPOSE 8000
 
 RUN ls -lat && apt-get update && apt install sudo -y && sudo apt-get install python3.8 -y \
